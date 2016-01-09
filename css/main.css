@@ -13,3 +13,7 @@ html, body {
 #start{
   cursor: pointer;
 }
+
+#continue{
+  cursor: pointer;
+}

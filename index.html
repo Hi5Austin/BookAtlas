@@ -9,7 +9,9 @@
   </head>
   <body>
     <input id='url' placeholder="url to your book"></input><input onclick='startProcess()' id='submiturl' type='submit'></input>
-    <h1 onclick='markMap();' id='start'> Click me to start your journey! </h1>
+    <h1 onclick='markMap();' id='start'> Click me to place markers! </h1>
+    <h2 onclick='showContent();' id='continue'> Continue </h2>
+    <div id="content"></div>
     <div id="map"></div>
     <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing"></script>

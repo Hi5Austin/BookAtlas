@@ -13,11 +13,9 @@ function createRequestQuery(){
 
 function startProcess(){
   createRequestQuery();
-	console.log(request);
+	initialize()
   $.getJSON(request, function(json){
 			alert('done');
-			initialize()
-			console.log(request);
       response = json;
       getLocationsFromQuery();
   });
@@ -33,7 +31,7 @@ function getLocationsFromQuery(){ //need to add text variable for later
       //alert(array[i]);
       //console.log("bye");
       if(parsedData.types[z] == "http://dbpedia.org/ontology/Place"){
-      	console.log(parsedData);
+      	//console.log(parsedData);
       	locations.push([parsedData.spot]);
       }
     }
@@ -58,20 +56,18 @@ function getGoogleMapsInfo(){
 }
 
 function markMap(){
-  for(var i = 0; i < mapData.length; i++){
-    makeMarker(mapData[i][0],mapData[i][1],location[i]); //lat , lng , name , info
+  for(var i = 0; i < mapData.length - 1; i++){
+		var location = locations[i];
+		//console.log(location);
+    makeMarker(mapData[i][0],mapData[i][1],location); //lat , lng , name , info
   }
 }
-
-//startProcess();
-
-
-
-
-
-
-
-// pick book / enter text
-// parse for locations
-// mark locations
-// go to first location, the go to others sequentially
+var viewCount = 0;
+var showContent = function(){
+	var count = viewCount;
+	$('#content').html('');
+	$('#content').html('<h2>' + locations[count][0] + '</h2>');
+	map.setZoom(14);
+	map.panTo(markers[count].position);
+	viewCount += 1;
+}
