@@ -33,8 +33,8 @@ function getLocationsFromQuery(){ //need to add text variable for later
       //alert(array[i]);
       //console.log("bye");
       if(parsedData.types[z] == "http://dbpedia.org/ontology/Place"){
-      	//console.log(JSON.stringify(parsedData.types[z]));
-      	locations.push(parsedData.spot);
+      	console.log(parsedData);
+      	locations.push([parsedData.spot]);
       }
     }
     getGoogleMapsInfo();
@@ -44,7 +44,7 @@ function getLocationsFromQuery(){ //need to add text variable for later
 function getGoogleMapsInfo(){
 	//gets the json for the map crap
 	for (var i= 0;i<locations.length;i++){
-  	$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + locations[i] + "&key=AIzaSyCt-DafRlApAhWwM9SbK4DuGEQiJcxmuDc", function(json){
+  	$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + locations[i][0] + "&key=AIzaSyCt-DafRlApAhWwM9SbK4DuGEQiJcxmuDc", function(json){
       //response = json;
       //console.log("Running" + i + "Time");
       tempData = JSON.parse(JSON.stringify(json.results));
@@ -59,7 +59,7 @@ function getGoogleMapsInfo(){
 
 function markMap(){
   for(var i = 0; i < mapData.length; i++){
-    makeMarker(mapData[i][0],mapData[i][1]);
+    makeMarker(mapData[i][0],mapData[i][1],location[i]); //lat , lng , name , info
   }
 }
 
