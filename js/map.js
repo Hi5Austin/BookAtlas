@@ -7,15 +7,16 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById("map"), mapProp);
 }
-google.maps.event.addDomListener(window, 'load', initialize);
-initialize();
+//google.maps.event.addDomListener(window, 'load', initialize);
+//initialize();
 
 var markers = {};
 var count = 0;
 
 function makeMarker(lat,lng){
+  console.log('MARKED')
   markers[count] = new google.maps.Marker({
-  	 		position: {'lat':lat,'lng':lng},
+  	 		position: {'lat':Number(lat),'lng':Number(lng)},
   	 		map: map,
   	 		title: "" + count,
   		});
