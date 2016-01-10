@@ -207,8 +207,8 @@ function makeMarker(lat,lng,data){
   	 		map: map
   		});
   //markers[count].title = data[0];
-  markers[count].addListener('click', function() {
-    console.log(this);//change the info on a box at the side of the screen
-  });
+  // markers[count].addListener('click', function() {
+  //   console.log(this);//change the info on a box at the side of the screen
+  // });
   count += 1;
 }
