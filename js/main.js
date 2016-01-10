@@ -11,6 +11,16 @@ function createRequestQuery(){
 	request += "&include=image%2Cabstract%2Ctypes%2Ccategories%2Clod&country=-1&categories&$app_id=8f218eb1&tags&$app_key=2f4459d8ae048b4ffc04aca40366eac0";
 }
 
+//Removes all the linear duplicates from the location list
+function cleanList(){
+  var uniqueLocations = [];
+  $.each(locations, function(i, el){
+      if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
+  });
+  locations = uniqueLocations;
+  getGoogleMapsInfo();
+}
+
 function startProcess(){
   createRequestQuery();
 	initialize()
@@ -35,7 +45,7 @@ function getLocationsFromQuery(){ //need to add text variable for later
       	locations.push([parsedData.spot]);
       }
     }
-    getGoogleMapsInfo();
+    cleanList();
 }
 }
 
@@ -68,6 +78,6 @@ var showContent = function(){
 	$('#content').html('');
 	$('#content').html('<h2>' + locations[count][0] + '</h2>');
 	map.setZoom(14);
-	map.panTo(markers[count].position);
+	//map.panTo(markers[count].position);
 	viewCount += 1;
 }
