@@ -73,7 +73,7 @@ function markMap(){
   for(var i = 0; i < mapData.length - 1; i++){
 		var location = locations[i];
 		//console.log(location);
-    makeMarker(mapData[i][0],mapData[i][1],location); //lat , lng , name , info
+    makeMarker(mapData[i][0],mapData[i][1],location,i); //lat , lng , name , info
   }
 }
 var viewCount = 0;
