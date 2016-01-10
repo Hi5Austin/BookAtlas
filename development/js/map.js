@@ -13,21 +13,15 @@ function initialize() {
 var markers = {};
 var count = 0;
 
-function makeMarker(lat,lng,name){
-  var infowindow = new google.maps.InfoWindow({
-    content: name
-  });
-   var contentString = "";
-
-  console.log('MARKED')
+function makeMarker(lat,lng,data){
+  console.log(data);
   markers[count] = new google.maps.Marker({
   	 		position: {'lat':Number(lat),'lng':Number(lng)},
-  	 		map: map,
-  	 		title: name,
-        label: name
+  	 		map: map
   		});
+  //markers[count].title = data[0];
   markers[count].addListener('click', function() {
-    //change the info on a box at the side of the screen
+    console.log(this);//change the info on a box at the side of the screen
   });
   count += 1;
 }
