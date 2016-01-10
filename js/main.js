@@ -18,6 +18,7 @@ function cleanList(){
       if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
   });
   locations = uniqueLocations;
+  getGoogleMapsInfo();
 }
 
 function startProcess(){
@@ -44,7 +45,7 @@ function getLocationsFromQuery(){ //need to add text variable for later
       	locations.push([parsedData.spot]);
       }
     }
-    getGoogleMapsInfo();
+    cleanList();
 }
 }
 
