@@ -1,6 +1,8 @@
 var response;
 var mapData = [];
 var locations = [];
+var articleMentions = [];
+var articleText;
 // var request = "https://api.dandelion.eu/datatxt/nex/v1/?min_confidence=0.6&social=False&text=The+Mona+Lisa+is+a+16th+century+oil+painting+created+by+Leonardo.+It%27s+held+at+the+Louvre+in+Paris.&include=image%2Cabstract%2Ctypes%2Ccategories%2Clod&country=-1&types&$app_id=8f218eb1&$app_key=2f4459d8ae048b4ffc04aca40366eac0"
 //var request = "https://api.dandelion.eu/datatxt/nex/v1/?min_confidence=0.6&social=False&url=http%3A%2F%2Fcontent.time.com%2Ftime%2Fspecials%2F2007%2Farticle%2F0%2C28804%2C1690753_1690757_1695382%2C00.html&country=-1&social=False&include=image%2Cabstract%2Ctypes%2Ccategories%2Clod&types&$app_id=8f218eb1&$app_key=2f4459d8ae048b4ffc04aca40366eac0"
 // fix this function \/
@@ -13,11 +15,11 @@ function createRequestQuery(){
 
 //Removes all the linear duplicates from the location list
 function cleanList(){
-  // var uniqueLocations = [];
-  // $.each(locations, function(i, el){
-  //    if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
-  // });
-  // locations = uniqueLocations;
+  var uniqueLocations = [];
+  $.each(locations, function(i, el){
+      if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
+   });
+   locations = uniqueLocations;
   getGoogleMapsInfo();
 }
 
@@ -34,6 +36,7 @@ function startProcess(){
 
 function getLocationsFromQuery(){ //need to add text variable for later
 	//console.log(response.annotations);
+	articleText= response.text;
 	for (var i = 0; i < response.annotations.length; i++) {
     //console.log(response.annotations[i]);
     var parsedData = JSON.parse(JSON.stringify(response.annotations[i]));
@@ -42,7 +45,7 @@ function getLocationsFromQuery(){ //need to add text variable for later
       //alert(array[i]);
       //console.log("bye");
       if(parsedData.types[z] == "http://dbpedia.org/ontology/Place"){
-      	//console.log(parsedData);
+      	articleMentions.push(findSentence(parsedData.start));
 				if(parsedData.spot.slice(-2) != 'an' && parsedData.spot.slice(-3) != 'ans' && parsedData.spot != 'Europe'){
       		locations.push([parsedData.spot]);
 				}
@@ -103,4 +106,29 @@ function makeLine(){
 	    strokeWeight:2
 	});
 	line.setMap(map)
+}
+
+function findSentence(index){
+	console.log(index);
+	var start;
+	var end;
+	var count = index;
+	var str = "";
+	while (start == null){
+		str = articleText.charAt(count);
+		if (str =='.'){
+			start = count;
+		}
+		count += 1;
+	}
+	count = index
+	str = '';
+	while (end == null){
+		str = articleText.charAt(count);
+		if (str =='.'){
+			end = count;
+		}
+		count -= 1;
+	}
+	return articleText.substring(start,end+1);
 }
