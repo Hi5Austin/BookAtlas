@@ -185,7 +185,7 @@ function initialize() {
       mapTypeIds:['Styled']
     },
     center: new google.maps.LatLng(7.317238425217869, 8),
-    zoom:2,
+    zoom:3,
     mapTypeId:'Styled'
   };
   var div = document.getElementById("map");

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html id='html'>
   <head>
-    <title>AtLit</title>
+    <title>BookQuest</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link href="css/main.css" rel="stylesheet" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/faviconatlas.ico"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -17,19 +19,9 @@
 
             <div class="cover-container">
 
-              <div class="masthead clearfix">
-                <div class="inner">
-                  <h3 class="masthead-brand">AtLit</h3>
-                  <nav>
-                    <ul class="nav masthead-nav">
-                      <li class="active"><a href="#">Home</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
 
               <div class="inner cover">
-                <h1>Welcome to Atlit!</h1>
+                <h1 id="welcome">Welcome to BookQuest!</h1>
                 <img src="images/atlas.png" alt="Logo" style="width:100px;height:100px;"><br /><br/ >
                 <input id='url' placeholder="url to your book"></input><input onclick='startProcess()' id='submiturl' type='submit'></input>
                 <h1 onclick='markMap();' id='start'> Click me to place markers! </h1>
