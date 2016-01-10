@@ -200,11 +200,12 @@ function initialize() {
 var markers = {};
 var count = 0;
 
-function makeMarker(lat,lng,data){
+function makeMarker(lat,lng,data,num){
   console.log(data);
   markers[count] = new google.maps.Marker({
   	 		position: {'lat':Number(lat),'lng':Number(lng)},
-  	 		map: map
+  	 		map: map,
+        label: "" + num
   		});
   //markers[count].title = data[0];
   // markers[count].addListener('click', function() {
