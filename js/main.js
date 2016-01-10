@@ -84,7 +84,14 @@ var viewCount = 0;
 var showContent = function(){
 	var count = viewCount;
 	$('#content').html('');
-	$('#content').html('<h2>' + locations[count][0] + '</h2>');
+	var html = '<h2>' + locations[count][0] + '</h2>';
+	for(var i = 0; i < articleMentions.length; i++){
+		var text = articleMentions[i];
+		if(text.indexOf(locations[count][0]) > -1){
+			html += '<h3>' + text + '</h3>';
+		}
+	}
+	$('#content').html(html);
 	map.setZoom(14);
 	map.panTo(markers[count].position);
 	viewCount += 1;
