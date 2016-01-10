@@ -78,6 +78,6 @@ var showContent = function(){
 	$('#content').html('');
 	$('#content').html('<h2>' + locations[count][0] + '</h2>');
 	map.setZoom(14);
-	map.panTo(markers[count].position);
+	//map.panTo(markers[count].position);
 	viewCount += 1;
 }
