@@ -75,6 +75,7 @@ function markMap(){
 		//console.log(location);
     makeMarker(mapData[i][0],mapData[i][1],location,i); //lat , lng , name , info
   }
+	makeLine();
 }
 var viewCount = 0;
 var showContent = function(){
@@ -84,4 +85,22 @@ var showContent = function(){
 	map.setZoom(14);
 	map.panTo(markers[count].position);
 	viewCount += 1;
+}
+
+var lineObjects = [];
+
+function convert(arr){
+		lineObjects.push({'lat':arr[0],'lng':arr[1]});
+}
+
+function makeLine(){
+	mapData.map(convert);
+	var line = new google.maps.Polyline({
+	    path:lineObjects,
+	    geodesic:true,
+	    strokeColor:'#FF0000',
+	    strokeOpacity:1.0,
+	    strokeWeight:2
+	});
+	line.setMap(map)
 }

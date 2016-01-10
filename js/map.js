@@ -205,7 +205,7 @@ function makeMarker(lat,lng,data,num){
   markers[count] = new google.maps.Marker({
   	 		position: {'lat':Number(lat),'lng':Number(lng)},
   	 		map: map,
-        label: "" + num
+       // label: "" + num
   		});
   //markers[count].title = data[0];
   // markers[count].addListener('click', function() {
