@@ -13,11 +13,11 @@ function createRequestQuery(){
 
 //Removes all the linear duplicates from the location list
 function cleanList(){
-  var uniqueLocations = [];
-  $.each(locations, function(i, el){
-      if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
-  });
-  locations = uniqueLocations;
+  // var uniqueLocations = [];
+  // $.each(locations, function(i, el){
+  //    if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
+  // });
+  // locations = uniqueLocations;
   getGoogleMapsInfo();
 }
 
@@ -26,6 +26,7 @@ function startProcess(){
 	initialize()
   $.getJSON(request, function(json){
 			alert('done');
+			console.log(json);
       response = json;
       getLocationsFromQuery();
   });
@@ -42,16 +43,19 @@ function getLocationsFromQuery(){ //need to add text variable for later
       //console.log("bye");
       if(parsedData.types[z] == "http://dbpedia.org/ontology/Place"){
       	//console.log(parsedData);
-      	locations.push([parsedData.spot]);
+				if(parsedData.spot.slice(-2) != 'an' && parsedData.spot.slice(-3) != 'ans' && parsedData.spot != 'Europe'){
+      		locations.push([parsedData.spot]);
+				}
       }
     }
-    cleanList();
-}
+	}
+	cleanList();
 }
 
 function getGoogleMapsInfo(){
 	//gets the json for the map crap
 	for (var i= 0;i<locations.length;i++){
+		console.log(i);
   	$.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address=" + locations[i][0] + "&key=AIzaSyCt-DafRlApAhWwM9SbK4DuGEQiJcxmuDc", function(json){
       //response = json;
       //console.log("Running" + i + "Time");
@@ -69,7 +73,7 @@ function markMap(){
   for(var i = 0; i < mapData.length - 1; i++){
 		var location = locations[i];
 		//console.log(location);
-    makeMarker(mapData[i][0],mapData[i][1],location); //lat , lng , name , info
+    makeMarker(mapData[i][0],mapData[i][1],location,i); //lat , lng , name , info
   }
 }
 var viewCount = 0;
@@ -77,7 +81,7 @@ var showContent = function(){
 	var count = viewCount;
 	$('#content').html('');
 	$('#content').html('<h2>' + locations[count][0] + '</h2>');
-	map.setZoom(12);
-	//map.panTo(markers[count].position);
+	map.setZoom(14);
+	map.panTo(markers[count].position);
 	viewCount += 1;
 }
