@@ -187,3 +187,8 @@ body {
     width: 700px;
   }
 }
+
+#welcome{
+    font-size: 80pt;
+    font-family: 'Lobster', cursive;
+}
