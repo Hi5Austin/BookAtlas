@@ -189,6 +189,7 @@ function initialize() {
     mapTypeId:'Styled'
   };
   var div = document.getElementById("map");
+  console.log("Got the Map Data");
   map = new google.maps.Map(div, mapProp);
   var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
     map.mapTypes.set('Styled', styledMapType);

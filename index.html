@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html id='html'>
   <head>
-    <title>Simple Map</title>
+    <title>AtLit</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link href="css/main.css" rel="stylesheet" media="screen">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   </head>
@@ -18,28 +19,25 @@
 
               <div class="masthead clearfix">
                 <div class="inner">
-                  <h3 class="masthead-brand">Cover</h3>
+                  <h3 class="masthead-brand">AtLit</h3>
                   <nav>
                     <ul class="nav masthead-nav">
                       <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Features</a></li>
-                      <li><a href="#">Contact</a></li>
                     </ul>
                   </nav>
                 </div>
               </div>
 
               <div class="inner cover">
-                <h1 class="cover-heading">Cover your page.</h1>
-                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                  <a href="#" class="btn btn-lg btn-default">Learn more</a>
-                </p>
+                <input id='url' placeholder="url to your book"></input><input onclick='startProcess()' id='submiturl' type='submit'></input>
+                <h1 onclick='markMap();' id='start'> Click me to place markers! </h1>
+                <h2 onclick='showContent();' id='continue'> Continue </h2>
+                <div id="content"></div>
               </div>
 
               <div class="mastfoot">
                 <div class="inner">
-                  <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                  <p>Created with <a href="http://getbootstrap.com">Bootstrap!</a>, by <a href="https://twitter.com/mdo">@mdo</a>. Edited by Atlas</p>
                 </div>
               </div>
 
@@ -49,14 +47,10 @@
 
         </div>
 
-    <input id='url' placeholder="url to your book"></input><input onclick='startProcess()' id='submiturl' type='submit'></input>
-    <h1 onclick='markMap();' id='start'> Click me to place markers! </h1>
-    <h2 onclick='showContent();' id='continue'> Continue </h2>
-    <div id="content"></div>
     <div id="map"></div>
+
     <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     </body>
