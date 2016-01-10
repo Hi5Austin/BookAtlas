@@ -43,7 +43,9 @@ function getLocationsFromQuery(){ //need to add text variable for later
       //console.log("bye");
       if(parsedData.types[z] == "http://dbpedia.org/ontology/Place"){
       	//console.log(parsedData);
-      	locations.push([parsedData.spot]);
+				if(parsedData.spot.slice(-2) != 'an' && parsedData.spot.slice(-3) != 'ans'){
+      		locations.push([parsedData.spot]);
+				}
       }
     }
 	}
