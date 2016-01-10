@@ -11,6 +11,15 @@ function createRequestQuery(){
 	request += "&include=image%2Cabstract%2Ctypes%2Ccategories%2Clod&country=-1&categories&$app_id=8f218eb1&tags&$app_key=2f4459d8ae048b4ffc04aca40366eac0";
 }
 
+//Removes all the linear duplicates from the location list
+function cleanList(){
+  var uniqueLocations = [];
+  $.each(locations, function(i, el){
+      if($.inArray(el, uniqueLocations) === -1) uniqueLocations.push(el);
+  });
+  locations = uniqueLocations;
+}
+
 function startProcess(){
   createRequestQuery();
 	initialize()
