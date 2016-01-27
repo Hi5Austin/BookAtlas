@@ -7,3 +7,5 @@ BookAtlas takes a link of a text based webpage and scans it for locations, and t
 Technology -
 We used the Dandelion enitity extraction API to help pull locations out of text as well as the Google Map API for geoloaction and displaying
 information on locations you may be taken.
+
+Demo at: http://bookquest.chrissul.com/
